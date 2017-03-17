@@ -1,0 +1,24 @@
+<div class="single_post">
+<br>
+  <div class="post_header">
+    <%= @post.created_at.strftime("%B,%d,%Y") %>
+     | <%= link_to "edit", edit_post_path(@post)%>
+     | <%= link_to "delete", post_path(@post), method: :delete, data: {confirm:"Are you sure, do you want to 'DELETE' this post?"} %>
+  </div>
+<br>
+  <div align=center>
+     <%= image_tag @post.image.url(:medium) %>
+   </div>
+  <br>
+  <p align=center> <%=@post.description%> </p>
+
+  <div class="comments">
+    <h3><%= @post.comments.count %> Comments</h3>
+    <%= render @post.comments%>
+<br>
+  <h6>  Add a comment </h6>
+    <%=render "comments/form"%>
+  </div>
+<br>
+<br>
+</div>

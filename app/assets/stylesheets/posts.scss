@@ -1,0 +1,21 @@
+// Place all the styles related to the Posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+body{
+  margin: 0;
+  padding: 0;
+}
+.single_post{
+  background-color: white;
+}
+.post_header {
+  height: 30px;
+  background-color: red;
+
+}
+
+.comments{
+  padding: 0 15% 0 15%;
+
+
+}

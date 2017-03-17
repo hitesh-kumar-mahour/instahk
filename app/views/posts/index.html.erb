@@ -1,0 +1,17 @@
+<% @posts.each do |post|%>
+ <div class="single_post">
+  <div class="post_header">
+    <p><%= link_to time_ago_in_words(post.created_at), post_path(post) %></p>
+  </div>
+  <br>
+  <div align=center>
+     <%= image_tag post.image.url(:medium) %>
+   </div>
+  <br>
+  <p align=center> <%= link_to post.description,post_path(post)%> </p>
+</div>
+  <br>
+  <br>
+  <br>
+
+<%end%>

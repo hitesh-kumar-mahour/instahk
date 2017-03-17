@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>InstaHk</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+
+
+
+
+</head>
+
+<body>
+
+<% flash.each do |key, value| %>
+  <div class="alert alert-<%= key %>"><%= value %></div>
+<% end %>
+
+
+  <nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container"><%= link_to "Instagram",root_path%>
+      <ul class="right hide-on-med-and-down">
+
+
+          <% if current_user%>
+          <li>
+             <%= link_to "New Post", new_post_path%>
+          </li>
+          <li>
+            <%= link_to "Logout",  destroy_user_session_path, method: :delete, data:{confirm: "Are you sure, do you want to logout?"} %>
+          </li>
+          <%else%>
+            <li>
+              <%= link_to "Login",  new_user_session_path%>
+            </li>
+            <li>
+              <%= link_to "Sign Up",  new_user_registration_path%>
+            </li>
+          <%end%>
+      </ul>
+
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="#">Navbar Link</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+
+<div class="yield">
+
+  <%= yield %>
+</div>
+
+
+
+</body>
+</html>
