@@ -1,24 +1,42 @@
-<div class="single_post">
 <br>
-  <div class="post_header">
-    <%= @post.created_at.strftime("%B,%d,%Y") %>
-     | <%= link_to "edit", edit_post_path(@post)%>
-     | <%= link_to "delete", post_path(@post), method: :delete, data: {confirm:"Are you sure, do you want to 'DELETE' this post?"} %>
-  </div>
-<br>
-  <div align=center>
-     <%= image_tag @post.image.url(:medium) %>
-   </div>
-  <br>
-  <p align=center> <%=@post.description%> </p>
+<div class="row single_post">
 
-  <div class="comments">
-    <h3><%= @post.comments.count %> Comments</h3>
-    <%= render @post.comments%>
-<br>
-  <h6>  Add a comment </h6>
-    <%=render "comments/form"%>
-  </div>
+  <div class="card">
+    <div class="row card-action header">
+      <div class="col">
+       <%= @post.created_at.strftime("%B,%d,%Y") %>
+     </div>
+       <div class="col right">
+       <%= link_to edit_post_path(@post) do %>
+         <i class="material-icons green-text"title="edit post">edit</i>
+       <%end%>
+        <%= link_to post_path(@post), method: :delete, data: {confirm:"Are you sure, do you want to 'DELETE' this post?"} do %>
+          <i class="material-icons red-text"title="delte comment">delete</i>
+      <%end%>
+
+       </div>
+    </div>
+    <div align=center>
+       <%= image_tag @post.image.url(:medium), class:"responsive-img" %>
+     </div>
+    <br>
+    <div class="card-action center">
+     <%=@post.description%>
+   </div>
+   <div class="comments card-action s12">
+     <div class="center"><strong class="blue-text"><%= @post.comments.count %> Comments</strong></div>
+     <%= render @post.comments%>
+   </div>
+
+   <div class="add_comment card-action">
+     <h5>  Add a comment </h5>
+       <%=render "comments/form"%>
+       <br>
+    </div>
+
+
+</div>
+
 <br>
 <br>
 </div>

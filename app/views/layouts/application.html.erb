@@ -5,10 +5,6 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-
-
-
-
 </head>
 
 <body>
@@ -19,38 +15,39 @@
 
 
   <nav class="light-blue lighten-1" role="navigation">
-    <div class="nav-wrapper container"><%= link_to "Instagram",root_path%>
-      <ul class="right hide-on-med-and-down">
+    <div class="nav-wrapper container" title="InstaHK"><%= link_to "",root_path,class:"fa fa-instagram fa-3x"%>
 
+      <ul class="right">
 
           <% if current_user%>
-          <li>
-             <%= link_to "New Post", new_post_path%>
+          <li title="New Post">
+             <%= link_to "New Post", new_post_path,class: "fa fa-plus-square"%>
           </li>
-          <li>
-            <%= link_to "Logout",  destroy_user_session_path, method: :delete, data:{confirm: "Are you sure, do you want to logout?"} %>
+          <li title="Logout">
+            <%= link_to "Sign Out",  destroy_user_session_path,class: "fa fa-sign-out", method: :delete, data:{confirm: "Are you sure, do you want to logout?"} %>
           </li>
           <%else%>
-            <li>
-              <%= link_to "Login",  new_user_session_path%>
+            <li title="Login">
+              <%= link_to "Sign in",  new_user_session_path,class:"fa fa-sign-in" %>
             </li>
-            <li>
-              <%= link_to "Sign Up",  new_user_registration_path%>
+            <li title="Sign Up">
+              <%= link_to "Sign Up",  new_user_registration_path, class:"fa fa-user-plus"%>
             </li>
           <%end%>
       </ul>
-
-      <ul id="nav-mobile" class="side-nav">
-        <li><a href="#">Navbar Link</a></li>
-      </ul>
-      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-    </div>
   </nav>
 
-<div class="yield">
 
-  <%= yield %>
+<div class="row">
+  <div class="col s0 m3 l3">
+  </div>
+  <div class="col s12 m6 l6 yield">
+    <%= yield %>
+  </div>
+  <div class="col s0 m3 l3">
+  </div>
 </div>
 
+<script src="https://use.fontawesome.com/b95016bb41.js"></script>
 </body>
 </html>

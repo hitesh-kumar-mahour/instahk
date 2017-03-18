@@ -13,14 +13,36 @@
  *= require_tree .
  *= require_self
  */
- body{
-   margin: 0;
-   padding: 0;
- }
- .yield{
-   padding-left: 30%;
-   padding-right: 30%;
-   background-color: #F5F4F3;
-  //  align-items: stretch;
- }
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
 @import "materialize";
+
+body{
+  background-color: #e3f2fd;
+}
+.single_post{
+  margin-left: 8px;
+  margin-right:8px;
+}
+.header{
+    border-bottom: 1px solid rgba(160, 160, 160, 0.2);
+}
+.card{
+  margin:0;
+}
+  .row .col{
+  padding:0;
+ }
+ a.fa.fa-instagram.fa-3x {
+     padding-top: 8px;
+ }
+ .comments{
+   margin: auto;
+  width:80%;
+ }
+ .add_comment{
+   margin: auto;
+  width: 70%;
+}
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
+     margin-right: 0;
+}
