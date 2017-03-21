@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>InstaHk</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -39,12 +40,12 @@
 
 
 <div class="row">
-  <div class="col s0 m3 l3">
+  <div class="col m2 l3 blank">
   </div>
-  <div class="col s12 m6 l6 yield">
+  <div class="col s12 m8 l6 yield">
     <%= yield %>
   </div>
-  <div class="col s0 m3 l3">
+  <div class="col m2 l3 blank">
   </div>
 </div>
 
