@@ -1,9 +1,11 @@
 <div class="comment clearfix ">
   <div class="comment_content">
-    <p class="comment_name green-text"><strong><%=comment.name %></strong>
+    <p class="comment_name green-text"><strong><%=comment.user.username%></strong>
+<% if (user_signed_in? && (current_user.id == comment.user_id))%>
     <%= link_to [comment.post,comment], method: :delete, data: {confirm:"Are you sure, do you want to 'DELETE' this comment?"} do %>
       <i class="material-icons right red-text"title="delte comment">delete</i>
     <%end%>
+<%end%>
     </p>
     <p class="comment_body grey-text"><%=comment.body%></p>
     <p class="comment_time"><%=time_ago_in_words(comment.created_at)%> Ago</p>
