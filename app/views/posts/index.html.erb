@@ -1,20 +1,25 @@
 <% @posts.each do |post|%>
 <br>
-<%= link_to post_path(post) do %>
+
 
  <div class=" row single_post hoverable">
    <div class="col s12 card">
-  <div class="card-action header">
-    <%=time_ago_in_words(post.created_at)%> ago
+  <div class="card-action header row">
+    <div class="left col blue-text">
+      <h5> <i><%= post.user.username %> </i></h5>
+    </div>
+    <div class="right col">
+      <%=time_ago_in_words(post.created_at)%> ago</div>
   </div>
   <br>
+  <%= link_to post_path(post) do %>
   <div class="center">
      <%= image_tag post.image.url(:medium), class:"responsive-img" %>
    </div>
+   <%end%>
   <br>
   <div class="card-action center"> <%= post.description%> </div>
 </div>
 </div>
 <% end %>
   <br>
-<%end%>

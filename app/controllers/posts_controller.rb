@@ -1,5 +1,15 @@
 class PostsController < ApplicationController
 before_action :authenticate_user!,except: [:index]
+before_action :post_owner, only: [:edit, :update, :destroy]
+
+  def post_owner
+    @post= Post.find( params[:id] )
+   unless @post.user_id == current_user.id
+    flash[:notice] = 'Access denied as you are not owner of this Post'
+    redirect_to posts_path
+   end
+  end
+
   def index
     @posts=Post.all.order('created_at DESC')
   end
@@ -43,6 +53,6 @@ before_action :authenticate_user!,except: [:index]
   private
 
     def permit_post
-      params.require(:post).permit(:image,:description)
+      params.require(:post).permit(:image,:description,:user_id)
     end
 end

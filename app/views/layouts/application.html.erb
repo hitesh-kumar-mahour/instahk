@@ -10,9 +10,11 @@
 
 <body>
 
-<% flash.each do |key, value| %>
-  <div class="alert alert-<%= key %>"><%= value %></div>
-<% end %>
+<div class="flash">
+  <% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %>"><%= value %></div>
+  <% end %>
+</div>
 
 
   <nav class="light-blue lighten-1" role="navigation">
@@ -26,6 +28,9 @@
           </li>
           <li title="Logout">
             <%= link_to "Sign Out",  destroy_user_session_path,class: "fa fa-sign-out", method: :delete, data:{confirm: "Are you sure, do you want to logout?"} %>
+          </li>
+          <li title="Username">
+            Hello! <%= current_user.username %>
           </li>
           <%else%>
             <li title="Login">

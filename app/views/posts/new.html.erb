@@ -10,6 +10,7 @@
   </div>
   <%end%>
 
+  <%=  f.hidden_field :user_id , value: current_user.id%>
   <%= f.label :photo%>
   <%= f.file_field :image %>
   <br>

@@ -3,33 +3,42 @@
 
   <div class="card">
     <div class="row card-action header">
-      <div class="col">
-       <%= @post.created_at.strftime("%B,%d,%Y") %>
-     </div>
-       <div class="col right">
-       <%= link_to edit_post_path(@post) do %>
-         <i class="material-icons green-text"title="edit post">edit</i>
-       <%end%>
-        <%= link_to post_path(@post), method: :delete, data: {confirm:"Are you sure, do you want to 'DELETE' this post?"} do %>
-          <i class="material-icons red-text"title="delte comment">delete</i>
+
+       <div class="col blue-text">
+       <h5><i><%= @post.user.username%></i></h5>
+       </div>
+
+      <%if (user_signed_in? && (current_user.id == @post.user_id))%>
+           <div class="col right">
+             <%= link_to edit_post_path(@post) do %>
+                <i class="material-icons green-text"title="edit post">edit</i>
+             <%end%>
+             <%= link_to post_path(@post), method: :delete, data: {confirm:"Are you sure, do you want to 'DELETE' this post?"} do %>
+                <i class="material-icons red-text"title="delte comment">delete</i>
+             <%end%>
+           </div>
       <%end%>
 
-       </div>
+      <div class="col right">
+        <%= @post.created_at.strftime("%B,%d,%Y") %>
+      </div>
+
     </div>
+
     <div align=center>
        <%= image_tag @post.image.url(:medium), class:"responsive-img" %>
-     </div>
+    </div>
     <br>
     <div class="card-action center">
      <%=@post.description%>
-   </div>
-   <div class="comments card-action s12">
+    </div>
+    <div class="comments card-action s12">
      <div class="center"><strong class="blue-text"><%= @post.comments.count %> Comments</strong></div>
      <%= render @post.comments%>
-   </div>
+    </div>
 
-   <div class="add_comment card-action">
-     <h5>  Add a comment </h5>
+    <div class="add_comment card-action">
+      <h5>  Add a comment </h5>
        <%=render "comments/form"%>
        <br>
     </div>

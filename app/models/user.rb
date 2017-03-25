@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-
+  has_many :posts
   # Virtual attribute for authenticating by either username or email
   # This is in addition to a real persisted field like 'username'
   attr_accessor :login
