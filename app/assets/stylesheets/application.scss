@@ -20,6 +20,12 @@
 body{
   background-color: #e3f2fd;
 }
+.row .col.right {
+    margin-right: 10px;
+}
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
+    text-transform: none;
+}
 .single_post{
   margin-left: 8px;
   margin-right:8px;
@@ -40,10 +46,7 @@ body{
    margin: auto;
   width:80%;
  }
- .add_comment{
-   margin: auto;
-  width: 70%;
-}
+
 .card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
      margin-right: 0;
 }

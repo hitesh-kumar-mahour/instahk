@@ -1,0 +1,30 @@
+
+<h3 class="green-text"><%=@user.username.capitalize%></h3>
+<h4 class="center"><%= pluralize(@posts.count,"Post")%> </h4>
+<% @posts.each do |post|%>
+<br>
+
+
+ <div class=" row single_post hoverable">
+   <div class="col s12 card">
+     <div class="card-action header row">
+         <%= link_to profile_path(post.user) do%>
+           <div class="left col blue-text">
+             <%= post.user.username.capitalize %>
+           </div>
+         <%end%>
+       <div class="right col">
+         <%=time_ago_in_words(post.created_at)%> ago</div>
+     </div>
+  <br>
+  <%= link_to post_path(post) do %>
+  <div class="center">
+     <%= image_tag post.image.url(:medium), class:"responsive-img" %>
+   </div>
+   <%end%>
+  <br>
+  <div class="card-action center"> <%= post.description%> </div>
+</div>
+</div>
+<% end %>
+  <br>

@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_one  :page
   has_many :posts
   has_many :comments
   # Virtual attribute for authenticating by either username or email

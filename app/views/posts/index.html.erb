@@ -5,9 +5,11 @@
  <div class=" row single_post hoverable">
    <div class="col s12 card">
   <div class="card-action header row">
-    <div class="left col blue-text">
-      <h5> <i><%= post.user.username %> </i></h5>
-    </div>
+      <%= link_to profile_path(post.user) do%>
+        <div class="left col blue-text">
+          <i><%= post.user.username.capitalize %></i>
+        </div>
+      <%end%>
     <div class="right col">
       <%=time_ago_in_words(post.created_at)%> ago</div>
   </div>
