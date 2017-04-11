@@ -21,6 +21,7 @@ before_action :post_owner, only: [:edit, :update, :destroy]
   def destroy
     @post= Post.find( params[:id] )
     @post.destroy
+      flash[:success]='Post deleted successfuly'
     redirect_to posts_path
   end
 
@@ -31,6 +32,7 @@ before_action :post_owner, only: [:edit, :update, :destroy]
   def create
     @post=Post.new(permit_post)
     if @post.save
+      flash[:success]='Post created successfuly'
       redirect_to post_path(@post)
     else
       render 'new'
@@ -44,6 +46,7 @@ before_action :post_owner, only: [:edit, :update, :destroy]
   def update
     @post= Post.find( params[:id] )
     if @post.update(params[:post].permit(:image,:description))
+      flash[:success]='Post updated successfuly'
       redirect_to post_path(@post)
     else
       render 'edit'

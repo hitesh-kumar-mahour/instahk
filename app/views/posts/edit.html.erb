@@ -1,4 +1,3 @@
-
 <%= form_for @post, html: { multipart: true } do |f| %>
   <%if @post.errors.any?%>
   <div class="errors">
@@ -9,8 +8,10 @@
       <% end %>
     </ul>
   </div>
-
   <%end%>
+
+  <%=  f.hidden_field :user_id , value: current_user.id%>
+
   <%= f.label :photo%>
   <%= f.file_field :image %>
   <br>

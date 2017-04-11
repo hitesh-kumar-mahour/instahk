@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_one :description
   has_one  :page
   has_many :posts
   has_many :comments

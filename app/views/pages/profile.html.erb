@@ -1,10 +1,20 @@
 
-<h3 class="green-text"><%=@user.username.capitalize%></h3>
+<h2 class="green-text"><%=@user.username.capitalize%></h2>
+
+<div class="description">
+  <%=render "pages/description"%>
+<br>
+<br>
+</div>
+
+
+
+
+
 <h4 class="center"><%= pluralize(@posts.count,"Post")%> </h4>
+
 <% @posts.each do |post|%>
 <br>
-
-
  <div class=" row single_post hoverable">
    <div class="col s12 card">
      <div class="card-action header row">

@@ -1,0 +1,9 @@
+<%= form_for ([@post,@comment]) do |f| %>
+
+
+  <%=  f.hidden_field :user_id , :value => current_user.id%>
+  <p class="comment_name green-text"><strong><%=current_user.username%></strong></p>
+  <%= f.text_area :body %>
+  <%= f.submit 'Comment', class: 'btn' %>
+
+<%end%>

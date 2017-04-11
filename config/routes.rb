@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  get 'descriptions/new'
+
+  get 'descriptions/create'
+
+  get 'descriptions/edit'
+
+  get 'descriptions/destroy'
+
   # get 'pages/profile' => 'pages/profile/:id'
 get 'pages/profile/:id'=> 'pages#profile' ,as: 'profile'
   root 'posts#index'
