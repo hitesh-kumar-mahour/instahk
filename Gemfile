@@ -10,6 +10,7 @@ gem 'aws-sdk','< 2.0'
 gem 'materialize-sass'
 gem 'devise'
 gem "figaro"
+gem 'activeadmin',"~>1.0.0.pre5"
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
