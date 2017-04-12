@@ -2,20 +2,22 @@ Rails.application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
+
   get 'descriptions/new'
-
   get 'descriptions/create'
-
   get 'descriptions/edit'
-
   get 'descriptions/destroy'
 
   # get 'pages/profile' => 'pages/profile/:id'
 get 'pages/profile/:id'=> 'pages#profile' ,as: 'profile'
+resources :pages
+
   root 'posts#index'
+
   resources :posts do
     resources :comments
   end
+
   devise_for :users
 
   # The priority is based upon order of creation: first created -> highest priority.

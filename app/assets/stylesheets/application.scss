@@ -20,6 +20,23 @@
 body{
   background-color: #e3f2fd;
 }
+
+.search_bar{
+  background-color: #e3f2fd;
+  width: 40%;
+  display: inline-block;
+  height: 75%;
+margin-left: 10%;
+}
+.search_text{
+  height: 30px ;
+}
+input#search {
+    height: 30px;
+    margin: 0 ;
+    width: 90%;
+padding-left: 10%;
+}
 .row .col.right {
     margin-right: 10px;
 }
