@@ -1,8 +1,7 @@
 
-
+<h4 class="green-text">showing search results for "<%=params[:search]%>", <%= pluralize(@users.count,"match")%> </h4>
 <br>
 <% @users.each do |user| %>
-<h4 class="green-text">showing search results for "<%=params[:search]%>", <%= pluralize(user.posts.count,"match")%> </h4>
 <br>
 <%= link_to user.username, profile_path(user) %>
 <br>
