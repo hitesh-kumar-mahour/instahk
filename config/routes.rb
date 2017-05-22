@@ -16,6 +16,10 @@ resources :pages
 
   resources :posts do
     resources :comments
+    member do
+    get 'like', to: "posts#like"
+    get 'unlike', to: "posts#unlike"
+  end
   end
 
   devise_for :users

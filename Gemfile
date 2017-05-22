@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 ruby '2.3.1'
 gem 'rails', '4.2.6'
 
-
+gem 'acts_as_votable', '~> 0.10.0'
 gem "paperclip", "~> 4.3"
 gem 'aws-sdk','< 2.0'
 gem 'materialize-sass'

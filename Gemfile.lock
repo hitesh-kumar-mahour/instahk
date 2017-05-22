@@ -50,6 +50,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    acts_as_votable (0.10.0)
     arbre (1.1.1)
       activesupport (>= 3.0.0)
     arel (6.0.3)
@@ -235,6 +236,7 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin (~> 1.0.0.pre5)
+  acts_as_votable (~> 0.10.0)
   aws-sdk (< 2.0)
   byebug
   coffee-rails (~> 4.1.0)

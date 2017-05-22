@@ -5,7 +5,7 @@
     <%end%>
 <% if (user_signed_in? && (current_user.id == comment.user_id||current_user.id == comment.post.user_id))%>
     <%= link_to [comment.post,comment], method: :delete, data: {confirm:"Are you sure, do you want to 'DELETE' this comment?"} do %>
-      <i class="material-icons right red-text"title="delte comment">delete</i>
+      <i class="material-icons right red-text"title="delete comment">delete</i>
     <%end%>
 <%end%>
 <% if (user_signed_in? && (current_user.id == comment.user_id))%>

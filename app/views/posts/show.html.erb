@@ -16,7 +16,7 @@
                 <i class="material-icons green-text"title="edit post">edit</i>
              <%end%>
              <%= link_to post_path(@post), method: :delete, data: {confirm:"Are you sure, do you want to 'DELETE' this post?"} do %>
-                <i class="material-icons red-text"title="delte comment">delete</i>
+                <i class="material-icons red-text"title="delete post">delete</i>
              <%end%>
            </div>
       <%end%>
@@ -34,6 +34,24 @@
     <div class="card-action center">
      <%=@post.description%>
     </div>
+
+<div>
+  <div class="vote_count">
+    <%= @post.get_likes.size %> likes
+    <% @post.get_likes.each do |like| %>
+  <br> <%= like.voter.username%>
+<% end %>
+  </div>
+
+  <div class="votes">
+    <% if current_user.liked? @post %>
+      <%= link_to "Unlike", unlike_post_path(@post), method: :get, remote: true, class: 'unlike_post' %>
+    <% else %>
+      <%= link_to "Like",like_post_path(@post), method: :get, remote: true, class: 'like_post' %>
+    <% end %>
+  </div>
+</div>
+
     <div class="comments card-action s12">
      <div class="center"><strong class="blue-text"><%= pluralize(@post.comments.count,"Comment") %> </strong></div>
      <%= render @post.comments%>

@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   has_one  :page
   has_many :posts
   has_many :comments
+   acts_as_voter
   # Virtual attribute for authenticating by either username or email
   # This is in addition to a real persisted field like 'username'
   attr_accessor :login
