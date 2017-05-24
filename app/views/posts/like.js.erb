@@ -1,5 +1,5 @@
 $('.like_post').bind('ajax:success', function(){
-   $(this).parent().parent().find('.vote_count').html('<%= escape_javascript @post.votes_for.size.to_s %> likes <% @post.get_likes.each do |like| %><br> <%= like.voter.username%><% end %>');
+  $(this).parent().parent().find('.vote_count').html('<div class="center"><h5><a class="dropdown-button" style="color:red;" data-hover="true" href="" data-activates="dropdown3"><%= pluralize(@post.votes_for.size.to_s,"Like") %></a></h5></div> <ul id="dropdown3" class="dropdown-content"> <% @post.get_likes.each do |like| %><li><%= link_to like.voter.username, profile_path(like.voter)%></li><% end %></ul>');
    $(this).closest('.like_post').hide();
-   $(this).closest('.votes').html(' <%= link_to "Unlike", unlike_post_path(@post), remote: true, method: :get, class: 'unlike_post' %>');
+   $(this).closest('.votes').html(' <%= link_to unlike_post_path(@post), style: "color:red;", remote: true, method: :get, class: 'unlike_post' do %> <div class="fa fa-heart fa-2x" style="color:#ff0000" aria-hidden="true"></div> <%end%> ');
 });

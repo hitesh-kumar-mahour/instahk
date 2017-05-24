@@ -26,30 +26,37 @@
         <%= form_tag(pages_path, method: 'get') do %>
         <div class="search_text black-text">
             <%= text_field_tag(:search, params[:search],placeholder: "Search Users") %>
-</div>
+        </div>
         <% end %>
       </div>
 
       <ul class="right">
           <% if current_user%>
-          <li title="New Post">
-             <%= link_to "New Post", new_post_path,class: "fa fa-plus-square"%>
-          </li>
-          <li title="Logout">
-            <%= link_to "Sign Out",  destroy_user_session_path,class: "fa fa-sign-out", method: :delete, data:{confirm: "Are you sure, do you want to logout?"} %>
-          </li>
-          <li title="Username">
-            <%= link_to  profile_path(current_user) do %>
-            <div >Hello! <%= current_user.username.capitalize %> </div>
-              <%end%>
-          </li>
+            <a class='dropdown-button' data-beloworigin="true" data-constrainWidth="false" href='#' data-activates='userprofile'>Hi! <%= current_user.username.capitalize %></a>
+            <ul id='userprofile' class='dropdown-content'>
+              <li title="Username">
+                <%= link_to  profile_path(current_user) do %>
+                <div class="light-blue-text text-lighten-1">My Profile</div>
+                  <%end%>
+              </li>
+              <li title="New Post">
+                 <%= link_to " New Post", new_post_path,class: "fa fa-plus-square light-blue-text text-lighten-1"%>
+              </li>
+              <li title="Logout">
+                <%= link_to " Sign Out",  destroy_user_session_path,class: "fa fa-sign-out light-blue-text text-lighten-1",method: :delete, data:{confirm: "Are you sure, do you want to logout?"} %>
+              </li>
+
+            </ul>
           <%else%>
-            <li title="Login">
-              <%= link_to "Sign in",  new_user_session_path,class:"fa fa-sign-in" %>
-            </li>
-            <li title="Sign Up">
-              <%= link_to "Sign Up",  new_user_registration_path, class:"fa fa-user-plus"%>
-            </li>
+            <a class='dropdown-button' data-beloworigin="true" data-constrainWidth="false" href='#' data-activates='login' style="font-size:18px;">Login</a>
+              <ul id='login' class='dropdown-content'>
+                  <li title="Login">
+                    <%= link_to " Sign in",  new_user_session_path,class:"fa fa-sign-in light-blue-text text-lighten-1"%>
+                  </li>
+                  <li title="Sign Up">
+                    <%= link_to " Sign Up",  new_user_registration_path, class:"fa fa-user-plus light-blue-text text-lighten-1"%>
+                  </li>
+              </ul>
           <%end%>
       </ul>
     </div>
@@ -59,7 +66,7 @@
 <div class="row">
   <div class="col m2 l3 blank">
   </div>
-  <div class="col s12 m8 l6 yield">
+  <div class="col s12 m8 l6 yield" style="padding-left: 10px;padding-right: 10px;">
     <%= yield %>
   </div>
   <div class="col m2 l3 blank">

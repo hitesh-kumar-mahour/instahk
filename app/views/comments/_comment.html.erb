@@ -1,7 +1,7 @@
-<div class="comment clearfix ">
+<!-- <div class="comment clearfix ">
   <div class="comment_content">
     <%= link_to profile_path(comment.user) do %>
-        <p class="comment_name green-text"><strong><%=comment.user.username%></strong></p>
+        <p style="display:inline"class="comment_name green-text"><strong><%=comment.user.username%></strong></p>
     <%end%>
 <% if (user_signed_in? && (current_user.id == comment.user_id||current_user.id == comment.post.user_id))%>
     <%= link_to [comment.post,comment], method: :delete, data: {confirm:"Are you sure, do you want to 'DELETE' this comment?"} do %>
@@ -15,6 +15,37 @@
 <%end%>
     <p class="comment_body grey-text"><%=comment.body%></p>
     <p class="comment_time"><%=time_ago_in_words(comment.created_at)%> Ago</p>
+  </div>
+
+</div> -->
+<div class="comment clearfix ">
+  <div class="comment_content">
+    <%= link_to profile_path(comment.user) do %>
+        <p  style="display:inline"class="comment_name green-text"><strong><%=comment.user.username%></strong></p>
+    <% end %>
+    <% if(user_signed_in? && (current_user.id == comment.user_id || current_user.id == comment.post.user_id))%>
+
+        <a class=" right dropdown-button red-text" data-constrainWidth="false" data-beloworigin="true" data-activates='comment_options<%=comment.id%>'><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></a>
+         <ul id='comment_options<%=comment.id%>' class='dropdown-content'>
+
+              <li><%= link_to [comment.post,comment], method: :delete, data: {confirm:"Are you sure, do you want to 'DELETE' this comment?"} do %>
+                  <i class="material-icons red-text"title="delete comment">delete</i> delete
+                <% end %>
+              </li>
+
+            <% if (current_user.id == comment.user_id)%>
+                <li> <%= link_to  edit_post_comment_path(comment.post,comment) do%>
+                  <i class="material-icons green-text" title="edit comment"> edit</i> edit
+                  <%end%>
+                </li>
+            <% end %>
+
+          </ul>
+   <% end %>
+
+    <p class="comment_body grey-text"><%=comment.body%></p>
+    <p class="comment_time"><%=time_ago_in_words(comment.created_at)%> Ago</p>
+
   </div>
 
 </div>

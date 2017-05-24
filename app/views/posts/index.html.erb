@@ -4,24 +4,37 @@
 
  <div class=" row single_post hoverable">
    <div class="col s12 card">
-  <div class="card-action header row">
-      <%= link_to profile_path(post.user) do%>
-        <div class="left col blue-text">
-          <i><%= post.user.username.capitalize %></i>
+        <div class="card-action header row">
+            <%= link_to profile_path(post.user) do%>
+              <div class="left col blue-text">
+                <i><%= post.user.username.capitalize %></i>
+              </div>
+            <%end%>
+          <div class="right col">
+            <%=time_ago_in_words(post.created_at)%> ago</div>
         </div>
-      <%end%>
-    <div class="right col">
-      <%=time_ago_in_words(post.created_at)%> ago</div>
-  </div>
-  <br>
-  <%= link_to post_path(post) do %>
-  <div class="center">
-     <%= image_tag post.image.url(:medium), class:"responsive-img" %>
-   </div>
-   <%end%>
-  <br>
-  <div class="card-action center"> <%= post.description%> </div>
-</div>
+        <br>
+        <%= link_to post_path(post) do %>
+        <div class="center">
+           <%= image_tag post.image.url(:medium), class:"responsive-img" %>
+         </div>
+         <%end%>
+        <br>
+
+        <hr style="border: 0; border-top: 1px solid rgba(160, 160, 160, 0.2);">
+
+        <div class="fame row" style="padding-top:1%;padding-bottom:2%; margin:0;">
+          <div class="col l5 m5 s4"></div>
+            <div class="col l1 m1 s2">
+              <strong><%= post.get_likes.size %></strong> <i class="fa fa-heart" style="color:#ff0000" aria-hidden="true"></i>
+            </div>
+            <div class="col l2 m2 s2">
+            <strong><%=post.comments.count %></strong> <i class="fa fa-comments" style="color:green;" aria-hidden="true"></i>
+            </div>
+            <div class="col l4 m4 s4"></div>
+        </div>
+
+        <div class="card-action center"> <%= post.description%> </div>
+    </div>
 </div>
 <% end %>
-  <br>
