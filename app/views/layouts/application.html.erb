@@ -30,11 +30,14 @@
         <% end %>
       </div>
 
-      <ul class="right">
+      <ul class="right" title="<%=current_user.username%>">
           <% if current_user%>
-            <a class='dropdown-button' data-beloworigin="true" data-constrainWidth="false" href='#' data-activates='userprofile'>Hi! <%= current_user.username.capitalize %></a>
+            <a style="height:64px;" class='dropdown-button' data-beloworigin="true" data-constrainWidth="false" href='#' data-activates='userprofile'>
+              <p style="margin:0; height:10px;" class="center">Hello!</p>
+              <p style="margin-top:10px;height:10px;"> <strong> <%= current_user.username.capitalize %></strong></p>
+           </a>
             <ul id='userprofile' class='dropdown-content'>
-              <li title="Username">
+              <li >
                 <%= link_to  profile_path(current_user) do %>
                 <div class="light-blue-text text-lighten-1">My Profile</div>
                   <%end%>

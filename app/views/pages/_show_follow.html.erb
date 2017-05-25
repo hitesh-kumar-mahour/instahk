@@ -1,0 +1,41 @@
+<% provide(:title, @title) %>
+<div class="row">
+  <aside class="col m4">
+    <section class="user_info">
+
+        <span><%= link_to profile_path(@user)  do%>
+              <h3><%= @user.username %></h3>
+              <%end%>
+        </span>
+
+        <div class="followers_following_count">
+            <a href="<%= followers_path(@user) %>"> <strong id="followers<%=@user.id%>" class="stat"> <%= @user.followers.count %></strong> followers</a>
+            <a href="<%= following_path(@user) %>"> <strong id="following<%=@user.id%>" class="stat"> <%= @user.following.count %></strong> following</a>
+        </div>
+
+    <%= render partial: "followunfollow_button", object:  @user, as: 'user' %>
+
+    </section>
+  </aside>
+  <div class="col m8">
+    <h3><%= @title %></h3>
+    <% if @fusers.any? %>
+          <ul class="users_follow">
+             <% @fusers.each do |user|%>
+
+             <li>
+               <%=link_to profile_path(user) do%>
+                  <strong> <%= user.username%></strong>
+               <%end%><br>
+               <%=user.email%>
+               <div class="followers right">
+                 <%= render "pages/followunfollow_button",:user => user%>
+               </div>
+             </li>
+
+             <%end%>
+          </ul>
+
+    <% end %>
+  </div>
+</div>

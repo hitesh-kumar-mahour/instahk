@@ -47,7 +47,7 @@
     <div class="">
 
       <div class="vote_count">
-        <div class="center"><h5><a class="dropdown-button" style="color:red;" data-hover="true" href='' data-activates='dropdown1'><%= pluralize(@post.get_likes.size,"Like") %> </a></h5></div>
+        <div class="center"><h5><a class="dropdown-button" style="color:red;" href='' data-activates='dropdown1'><%= pluralize(@post.get_likes.size,"Like") %> </a></h5></div>
         <ul id='dropdown1' class='dropdown-content'>
         <% @post.get_likes.each do |like| %>
           <li><%= link_to like.voter.username, profile_path(like.voter)%></li>

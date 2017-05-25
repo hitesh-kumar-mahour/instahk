@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 ruby '2.3.1'
 gem 'rails', '4.2.6'
 
+gem 'will_paginate', '~> 3.1.1'
 gem 'acts_as_votable', '~> 0.10.0'
 gem "paperclip", "~> 4.3"
 gem 'aws-sdk','< 2.0'

@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-before_action :authenticate_user!,except: [:index]
+before_action :authenticate_user!
 before_action :post_owner, only: [:edit, :update, :destroy]
 
   def post_owner
@@ -11,7 +11,11 @@ before_action :post_owner, only: [:edit, :update, :destroy]
   end
 
   def index
-    @posts=Post.all.order('created_at DESC')
+    # @posts=Post.all.order('created_at DESC')
+
+    following_ids = current_user.following.map(&:id)
+    following_ids << current_user.id
+    @posts=Post.where(user_id: following_ids).order("created_at DESC").paginate(page: params[:page])
   end
 
   def show

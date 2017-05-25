@@ -1,7 +1,7 @@
 class Post < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :user  ,dependent: :destroy
   has_many :comments ,dependent: :destroy
-  acts_as_votable
+  acts_as_votable 
 
   has_attached_file :image, styles: {
      medium: "500x500>",

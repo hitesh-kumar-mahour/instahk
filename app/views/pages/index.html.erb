@@ -3,8 +3,17 @@
 <br>
 <% @users.each do |user| %>
 <br>
-<%= link_to user.username, profile_path(user) %>
-<br>
-&nbsp &nbsp <%= user.email %>
-<br>
+    <div class="row">
+      <div class="col">
+          <%= link_to user.username, profile_path(user) %>
+            <br>
+            <%= user.email %>
+            <br>
+      </div>
+
+      <div class="right col">
+        <%= render "pages/followunfollow_button",:user => user%>
+      </div>
+    </div>
+
 <% end %>

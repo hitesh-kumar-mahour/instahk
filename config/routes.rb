@@ -8,9 +8,10 @@ Rails.application.routes.draw do
   get 'descriptions/edit'
   get 'descriptions/destroy'
 
-  # get 'pages/profile' => 'pages/profile/:id'
-get 'pages/profile/:id'=> 'pages#profile' ,as: 'profile'
-resources :pages
+get 'profile/:id'=> 'pages#profile' ,as: 'profile'
+get 'followers/:id'=> 'pages#followers' ,as: 'followers'
+get 'following/:id'=> 'pages#following' ,as: 'following'
+resources :pages, only: [:index]
 
   root 'posts#index'
 
@@ -23,7 +24,12 @@ resources :pages
   end
 
   devise_for :users
-
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
+resources :relationships,       only: [:create, :destroy]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
