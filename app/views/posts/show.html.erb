@@ -2,13 +2,16 @@
 <div class="row single_post">
 
   <div class="card">
-    <div class="row card-action header">
+    <div class="card-action header row " style="padding:12px 10px 6px 10px; ">
 
-      <%= link_to profile_path(@post.user) do%>
-        <div class="left col blue-text">
-          <i><%= @post.user.username.capitalize %></i>
+        <div class="col s1 l1 m1 left ">
+          <%= link_to profile_path(@post.user) do%>
+            <div class="blue-text row valign-wrapper">
+              <div class="col s8 m8 l8"> <%= image_tag @post.user.avatar.url(:thumb),class:"circle responsive-img"%></div>
+              <div class="col s1 m1 l1 valign-wrapper" style:" padding-right:20px;"> <%= @post.user.username.capitalize %></div>
+            </div>
+          <%end%>
         </div>
-      <%end%>
 
       <%if (user_signed_in? && (current_user.id == @post.user_id))%>
            <div class="col right">

@@ -1,17 +1,17 @@
 class User < ActiveRecord::Base
-  has_one :description,  dependent:   :destroy
   has_one  :page,  dependent:   :destroy
   has_many :posts,  dependent:   :destroy
   has_many :comments,  dependent:   :destroy
-  acts_as_voter 
+  validates :date_of_birth, presence: true, on: :create
+
+  acts_as_voter
+
   has_many :active_relationships, class_name:  "Relationship",foreign_key: "follower_id", dependent:   :destroy
   has_many :passive_relationships, class_name:  "Relationship",
                                    foreign_key: "followed_id",
                                    dependent:   :destroy
   has_many :following, through: :active_relationships,  source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
-
-
   # Follows a user.
   def follow(other_user)
     following << other_user
@@ -28,6 +28,13 @@ class User < ActiveRecord::Base
   end
 
 
+
+  has_attached_file :avatar, styles:{
+     :medium => "300x300>",
+     :thumb => "100x100#" },
+     default_url: "https://s3.amazonaws.com/instatestbuck/user-icon.jpg"
+
+ validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
 
   # Virtual attribute for authenticating by either username or email

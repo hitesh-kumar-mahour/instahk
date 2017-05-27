@@ -16,9 +16,24 @@
 //= require materialize-sprockets
 //= require_tree
 // Initialize collapse button
-  $(document).ready(function(){
-            $(".button-collapse").sideNav();
-            $('.collapsible').collapsible();
-            Materialize.updateTextFields();
 
-         });
+document.addEventListener("turbolinks:load", function() {
+  $('select').material_select();
+  $('.datepicker').pickadate({
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 100 // Creates a dropdown of 15 years to control year
+      });
+  $(".button-collapse").sideNav();
+  $('.collapsible').collapsible();
+  Materialize.updateTextFields();
+})
+  // $(document).ready(function(){
+  //           $('select').material_select();
+  //           $('.datepicker').pickadate({
+  //                 selectMonths: true, // Creates a dropdown to control month
+  //                 selectYears: 100 // Creates a dropdown of 15 years to control year
+  //               });
+  //           $(".button-collapse").sideNav();
+  //           $('.collapsible').collapsible();
+  //           Materialize.updateTextFields();
+  //        });

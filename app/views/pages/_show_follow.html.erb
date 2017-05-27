@@ -1,10 +1,10 @@
 <% provide(:title, @title) %>
 <div class="row">
-  <aside class="col m4">
+  <aside class="col m5">
     <section class="user_info">
 
         <span><%= link_to profile_path(@user)  do%>
-              <h3><%= @user.username %></h3>
+              <h4><%= @user.username %></h4>
               <%end%>
         </span>
 
@@ -17,8 +17,8 @@
 
     </section>
   </aside>
-  <div class="col m8">
-    <h3><%= @title %></h3>
+  <div class="col m7">
+    <h3><%= @title%></h3>
     <% if @fusers.any? %>
           <ul class="users_follow">
              <% @fusers.each do |user|%>

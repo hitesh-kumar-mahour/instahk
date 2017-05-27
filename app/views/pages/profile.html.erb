@@ -1,47 +1,80 @@
+<div class="row" style="margin: 5% 5% 5% 5%;">
 
-<h2 class="green-text"><%=@user.username.capitalize%></h2>
+    <div class="col l3 s3 m3 "><%= image_tag @user.avatar.url(:medium),class:"circle responsive-img z-depth-3" %></div>
 
-  <div class="followers_following_count">
-      <a href="<%= followers_path(@user) %>"> <strong id="followers<%=@user.id%>" class="stat"> <%= @user.followers.count %></strong> followers</a>
-      <a href="<%= following_path(@user) %>"> <strong id="following<%=@user.id%>" class="stat"> <%= @user.following.count %></strong> following</a>
-  </div>
+    <div class="col followers_following_count" style="margin-left: 25%; margin-top:5%">
 
-<%= render partial: "followunfollow_button", object:  @user, as: 'user' %>
+        <div class="row">
+            <div class="col" style="margin-right: 5px;"><a class="grey-text text-darken-2" href="#posts"> <div class="row center" style="font-weight: bold;"><%= @posts.count%></div> <div class="row">posts </div></a></div>
+            <div class="col "style="margin-right: 5px;"><a class="grey-text text-darken-2" href="<%= followers_path(@user) %>"> <div id="followers<%=@user.id%>" class="row center" style="font-weight: bold;"> <%= @user.followers.count %></div> <div class="row"> followers </div></a></div>
+            <div class="col"><a class="grey-text text-darken-2" href="<%= following_path(@user) %>"> <div id="following<%=@user.id%>" class="row center" style="font-weight: bold;"> <%= @user.following.count %></div> <div class="row"> following</div></a></div>
+        </div>
+        <div class="row center">
+          <%= render partial: "followunfollow_button", object:  @user, as: 'user' %>
+       </div>
 
-<div class="description">
-      <%=render "pages/description"%>
-    <br>
-    <br>
+    </div>
+
 </div>
 
+<div class="row description" style="margin-left:12%;">
+    <strong><%=@user.username.capitalize%></strong>  &nbsp <%= @user.about%><br>
+    <strong>Birth</strong> &nbsp<%=@user.date_of_birth.to_date%><br>
+    <strong>Gender</strong>
+    &nbsp
+    <%if @user.is_female %>
+        Female
+    <%else%>
+        Male
+    <%end%>
+</div>
 
+<div id="posts">
+      <% @posts.each do |post|%>
+      <br>
+            <div class=" row single_post hoverable">
+              <div class="col s12 card">
+                   <div class="card-action header row " style="padding:12px 10px 6px 10px; ">
 
+                       <div class="col s1 l1 m1 left ">
+                         <%= link_to profile_path(post.user) do%>
+                           <div class="blue-text row valign-wrapper">
+                             <div class="col s8 m8 l8"> <%= image_tag post.user.avatar.url(:thumb),class:"circle responsive-img"%></div>
+                             <div class="col s1 m1 l1 valign-wrapper" style:" padding-right:20px;"> <%= post.user.username.capitalize %></div>
+                           </div>
+                         <%end%>
+                       </div>
 
+                       <div class="right col"> <%=time_ago_in_words(post.created_at)%> ago</div>
 
-<h4 class="center"><%= pluralize(@posts.count,"Post")%> </h4>
+                 </div>
 
-<% @posts.each do |post|%>
-<br>
- <div class=" row single_post hoverable">
-   <div class="col s12 card">
-     <div class="card-action header row">
-         <%= link_to profile_path(post.user) do%>
-           <div class="left col blue-text">
-             <%= post.user.username.capitalize %>
+                   <br>
+                   <%= link_to post_path(post) do %>
+                   <div class="center">
+                      <%= image_tag post.image.url(:medium), class:"responsive-img" %>
+                    </div>
+                    <%end%>
+                   <br>
+
+                   <hr style="border: 0; border-top: 1px solid rgba(160, 160, 160, 0.2);">
+
+                   <div class="fame row" style="padding-top:1%;padding-bottom:2%; margin:0;">
+                     <div class="col l5 m5 s4"></div>
+                       <div class="col l1 m1 s2">
+                         <strong><%= post.get_likes.size %></strong> <i class="fa fa-heart" style="color:#ff0000" aria-hidden="true"></i>
+                       </div>
+                       <div class="col l2 m2 s2">
+                       <strong><%=post.comments.count %></strong> <i class="fa fa-comments" style="color:green;" aria-hidden="true"></i>
+                       </div>
+                       <div class="col l4 m4 s4"></div>
+                   </div>
+
+                   <div class="card-action center"> <%= post.description%> </div>
+
+               </div>
            </div>
-         <%end%>
-       <div class="right col">
-         <%=time_ago_in_words(post.created_at)%> ago</div>
-     </div>
-  <br>
-  <%= link_to post_path(post) do %>
-  <div class="center">
-     <%= image_tag post.image.url(:medium), class:"responsive-img" %>
-   </div>
-   <%end%>
-  <br>
-  <div class="card-action center"> <%= post.description%> </div>
+      <% end %>
+        <br>
+
 </div>
-</div>
-<% end %>
-  <br>

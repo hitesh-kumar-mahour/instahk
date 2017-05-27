@@ -4,15 +4,21 @@
     <br>
          <div class=" row single_post hoverable">
            <div class="col s12 card">
-                <div class="card-action header row">
-                    <%= link_to profile_path(post.user) do%>
-                      <div class="left col blue-text">
-                        <i><%= post.user.username.capitalize %></i>
-                      </div>
-                    <%end%>
-                  <div class="right col">
-                    <%=time_ago_in_words(post.created_at)%> ago</div>
-                </div>
+                <div class="card-action header row " style="padding:12px 10px 6px 10px; ">
+
+                    <div class="col s1 l1 m1 left ">
+                      <%= link_to profile_path(post.user) do%>
+                        <div class="blue-text row valign-wrapper">
+                          <div class="col s8 m8 l8"> <%= image_tag post.user.avatar.url(:thumb),class:"circle responsive-img"%></div>
+                          <div class="col s1 m1 l1 valign-wrapper" style:" padding-right:20px;"> <%= post.user.username.capitalize %></div>
+                        </div>
+                      <%end%>
+                    </div>
+
+                    <div class="right col"> <%=time_ago_in_words(post.created_at)%> ago</div>
+
+              </div>
+
                 <br>
                 <%= link_to post_path(post) do %>
                 <div class="center">
@@ -40,3 +46,4 @@
         </div>
     <% end %>
 <%end%>
+<br><br>

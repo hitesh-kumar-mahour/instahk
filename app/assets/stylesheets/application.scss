@@ -21,6 +21,9 @@ body{
   background-color: #e3f2fd;
 }
 
+.row{
+  margin-bottom:0;
+}
 .search_bar{
   background-color: #e3f2fd;
   width: 40%;
@@ -41,6 +44,7 @@ padding-left: 10%;
     margin-right: 10px;
 }
 .card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
+    margin-right: 0;
     text-transform: none;
 }
 .header{
@@ -59,7 +63,3 @@ padding-left: 10%;
    margin: auto;
   width:80%;
  }
-
-.card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
-     margin-right: 0;
-}

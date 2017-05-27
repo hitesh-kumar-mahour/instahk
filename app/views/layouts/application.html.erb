@@ -30,30 +30,29 @@
         <% end %>
       </div>
 
-      <ul class="right" title="<%=current_user.username%>">
+      <ul class="right">
           <% if current_user%>
-            <a style="height:64px;" class='dropdown-button' data-beloworigin="true" data-constrainWidth="false" href='#' data-activates='userprofile'>
-              <p style="margin:0; height:10px;" class="center">Hello!</p>
-              <p style="margin-top:10px;height:10px;"> <strong> <%= current_user.username.capitalize %></strong></p>
-           </a>
+              <a title="<%=current_user.username%>" style="height:64px;"class='dropdown-button ' data-beloworigin="true" data-constrainWidth="false" href='#' data-activates='userprofile'>
+                  <!-- <div class="col "> -->
+                    <div class="row" style="height:20px;"> Hello!</div>
+                    <div class="row" style="height:32px;"> <strong> <%= current_user.username.capitalize %></strong></div>
+                  <!-- </div> -->
+               </a >
             <ul id='userprofile' class='dropdown-content'>
               <li >
                 <%= link_to  profile_path(current_user) do %>
                 <div class="light-blue-text text-lighten-1">My Profile</div>
                   <%end%>
               </li>
-              <li title="New Post">
-                 <%= link_to " New Post", new_post_path,class: "fa fa-plus-square light-blue-text text-lighten-1"%>
-              </li>
-              <li title="Logout">
-                <%= link_to " Sign Out",  destroy_user_session_path,class: "fa fa-sign-out light-blue-text text-lighten-1",method: :delete, data:{confirm: "Are you sure, do you want to logout?"} %>
-              </li>
+              <li title="Edit Profile"><%= link_to 'Edit Profile',edit_user_registration_path,class:" light-blue-text text-lighten-1" %></li>
+              <li title="New Post"><%= link_to " New Post", new_post_path,class: "fa fa-plus-square light-blue-text text-lighten-1"%></li>
+              <li title="Logout"><%= link_to " Sign Out",  destroy_user_session_path,class: "fa fa-sign-out light-blue-text text-lighten-1",method: :delete, data:{confirm: "Are you sure, do you want to logout?"} %></li>
 
             </ul>
           <%else%>
             <a class='dropdown-button' data-beloworigin="true" data-constrainWidth="false" href='#' data-activates='login' style="font-size:18px;">Login</a>
               <ul id='login' class='dropdown-content'>
-                  <li title="Login">
+                  <li title="Sign In">
                     <%= link_to " Sign in",  new_user_session_path,class:"fa fa-sign-in light-blue-text text-lighten-1"%>
                   </li>
                   <li title="Sign Up">

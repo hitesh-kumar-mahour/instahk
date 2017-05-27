@@ -1,4 +1,6 @@
-<% if current_user.id != user.id %>
+<% if current_user.id == user.id %>
+  <%= link_to 'Edit Profile',edit_user_registration_path,class:"text-lighten-1 btn" %>
+<%else%>
     <div id="ff_button<%=user.id%>">
         <% if current_user.following?(user) %>
               <%= form_for(current_user.active_relationships.find_by(followed_id: user.id),
