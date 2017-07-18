@@ -1,10 +1,10 @@
 class User < ActiveRecord::Base
-  has_one  :page,  dependent:   :destroy
-  has_many :posts,  dependent:   :destroy
-  has_many :comments,  dependent:   :destroy
+  has_one  :page ,dependent: :destroy
+  has_many :posts ,dependent: :destroy
+  has_many :comments ,dependent: :destroy
   validates :date_of_birth, presence: true, on: :create
 
-  acts_as_voter
+  acts_as_voter 
 
   has_many :active_relationships, class_name:  "Relationship",foreign_key: "follower_id", dependent:   :destroy
   has_many :passive_relationships, class_name:  "Relationship",
@@ -29,12 +29,36 @@ class User < ActiveRecord::Base
 
 
 
-  has_attached_file :avatar, styles:{
-     :medium => "300x300>",
-     :thumb => "100x100#" },
-     default_url: "https://s3.amazonaws.com/instatestbuck/user-icon.jpg"
+
+
+
+  if Rails.env == "production"
+        S3_CREDENTIALS = {bucket: ENV.fetch('S3_BUCKET_NAME'),
+                          access_key_id: ENV.fetch('AWS_ACCESS_KEY_ID'),
+                          secret_access_key: ENV.fetch('AWS_SECRET_ACCESS_KEY'),
+                          s3_region: ENV.fetch('AWS_REGION')}
+
+  else
+        S3_CREDENTIALS = {bucket: ENV.fetch('S3_BUCKET_NAME'),
+                          access_key_id: ENV.fetch('AWS_ACCESS_KEY_ID'),
+                          secret_access_key: ENV.fetch('AWS_SECRET_ACCESS_KEY'),
+                          s3_region: ENV.fetch('AWS_REGION')}
+  end
+
+  has_attached_file :avatar,
+                    styles:{ :cropped => '' ,large: "500x500>", medium: "300x300#", thumb: "100x100#" },
+                    default_url: "https://s3.amazonaws.com/instatestbuck/user-icon.jpg",
+                    storage:          :s3,
+                    s3_credentials:   S3_CREDENTIALS
+                    # path:             "avatar/:id/:style.:extension"
 
  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+
+
+
+
+
+
 
 
   # Virtual attribute for authenticating by either username or email

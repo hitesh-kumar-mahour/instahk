@@ -4,14 +4,14 @@ source 'https://rubygems.org'
 ruby '2.3.1'
 gem 'rails', '4.2.6'
 
-gem 'will_paginate', '~> 3.1.1'
-gem 'acts_as_votable', '~> 0.10.0'
 gem "paperclip", "~> 4.3"
 gem 'aws-sdk','< 2.0'
 gem 'materialize-sass'
 gem 'devise'
 gem "figaro"
 gem 'activeadmin',"~>1.0.0.pre5"
+gem 'acts_as_votable', '~> 0.10.0'
+gem 'will_paginate', '~> 3.1.1'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'

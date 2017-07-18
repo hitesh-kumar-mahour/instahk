@@ -20,21 +20,21 @@
   <div class="col m7">
     <h3><%= @title%></h3>
     <% if @fusers.any? %>
-          <ul class="users_follow">
+          <div class="users_follow">
              <% @fusers.each do |user|%>
 
-             <li>
-               <%=link_to profile_path(user) do%>
-                  <strong> <%= user.username%></strong>
-               <%end%><br>
-               <%=user.email%>
-               <div class="followers right">
+             <div class="row card " style="padding:5px 0 5px 0">
+
+               <div class="col s1 m1 l1" style="margin-left:5px"> <%= image_tag user.avatar.url(:thumb),class:"circle responsive-img"%></div>
+               <div class="col s3 m3 l3" style="margin:10px 0 0 5px;"><strong> <%= link_to user.username, profile_path(user) %></strong></div>
+               <div class="right col valign-wrapper">
                  <%= render "pages/followunfollow_button",:user => user%>
                </div>
-             </li>
+
+             </div>
 
              <%end%>
-          </ul>
+          </div>
 
     <% end %>
   </div>

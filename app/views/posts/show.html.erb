@@ -39,6 +39,7 @@
     </div>
 
     <div align=center>
+      <br>
        <%= image_tag @post.image.url(:medium), class:"responsive-img" %>
     </div>
     <br>
@@ -75,6 +76,7 @@
 
     <div class="comments card-action s12">
        <div class="center"><h5 class="blue-text"><%= pluralize(@post.comments.count,"Comment") %> </h5></div>
+      <br>
        <%= render @post.comments%>
        <%=render "comments/form"%>
     </div>

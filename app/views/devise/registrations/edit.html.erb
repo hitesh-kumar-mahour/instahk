@@ -39,7 +39,7 @@
 
   <div class="input-field">
     <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off",:placeholder => "(leave blank if you don't want to change it)" %>
+    <%= f.password_field :password, autocomplete: "off",:placeholder => " leave blank if you don't want to change it" %>
     <% if @minimum_password_length %>
       <br />
       <em><%= @minimum_password_length %> characters minimum</em>
@@ -53,7 +53,7 @@
 
   <div class="input-field">
     <%= f.label :current_password %> <br />
-    <%= f.password_field :current_password, autocomplete: "off",:placeholder => "(we need your current password to confirm your changes)" %>
+    <%= f.password_field :current_password, autocomplete: "off",:placeholder => " we need your current password to confirm your changes" %>
   </div>
 
   <div class="actions">

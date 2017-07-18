@@ -3,10 +3,6 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
-  get 'descriptions/new'
-  get 'descriptions/create'
-  get 'descriptions/edit'
-  get 'descriptions/destroy'
 
 get 'profile/:id'=> 'pages#profile' ,as: 'profile'
 get 'followers/:id'=> 'pages#followers' ,as: 'followers'
@@ -24,6 +20,7 @@ resources :pages, only: [:index]
   end
 
   devise_for :users
+
   resources :users do
     member do
       get :following, :followers

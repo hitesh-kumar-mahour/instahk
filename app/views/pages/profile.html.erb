@@ -1,13 +1,17 @@
 <div class="row" style="margin: 5% 5% 5% 5%;">
 
-    <div class="col l3 s3 m3 "><%= image_tag @user.avatar.url(:medium),class:"circle responsive-img z-depth-3" %></div>
+    <div class="col l3 s3 m3 "><%= image_tag @user.avatar.url(:thumb),class:"circle responsive-img z-depth-3" %></div>
 
-    <div class="col followers_following_count" style="margin-left: 25%; margin-top:5%">
+    <div class="col l3 m3 s2 empty"></div>
 
-        <div class="row">
-            <div class="col" style="margin-right: 5px;"><a class="grey-text text-darken-2" href="#posts"> <div class="row center" style="font-weight: bold;"><%= @posts.count%></div> <div class="row">posts </div></a></div>
-            <div class="col "style="margin-right: 5px;"><a class="grey-text text-darken-2" href="<%= followers_path(@user) %>"> <div id="followers<%=@user.id%>" class="row center" style="font-weight: bold;"> <%= @user.followers.count %></div> <div class="row"> followers </div></a></div>
-            <div class="col"><a class="grey-text text-darken-2" href="<%= following_path(@user) %>"> <div id="following<%=@user.id%>" class="row center" style="font-weight: bold;"> <%= @user.following.count %></div> <div class="row"> following</div></a></div>
+    <div class="col l5 followers_following_count" style=" margin-top:5%">
+
+        <div class="row center">
+            <div class="col l1 m0 s0  empty"></div>
+            <div class="col l3 m3 s3" ><a class="grey-text text-darken-2" href="#posts"> <div class="row center" style="font-weight: bold;"><%= @posts.count%></div> <div class="row center">posts </div></a></div>
+            <div class="col l4 m5 s5"><a class="grey-text text-darken-2" href="<%= followers_path(@user) %>"> <div id="followers<%=@user.id%>" class="row center" style="font-weight: bold;"> <%= @user.followers.count %></div> <div class="row"> followers </div></a></div>
+            <div class="col l4 m4 s4"><a class="grey-text text-darken-2" href="<%= following_path(@user) %>"> <div id="following<%=@user.id%>" class="row center" style="font-weight: bold;"> <%= @user.following.count %></div> <div class="row"> following</div></a></div>
+            <div class="col l0 m0 s0 empty"></div>
         </div>
         <div class="row center">
           <%= render partial: "followunfollow_button", object:  @user, as: 'user' %>

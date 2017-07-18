@@ -19,33 +19,41 @@
 
 </div> -->
 <div class="comment clearfix ">
-  <div class="comment_content">
-    <%= link_to profile_path(comment.user) do %>
-        <p  style="display:inline"class="comment_name green-text"><strong><%=comment.user.username%></strong></p>
-    <% end %>
-    <% if(user_signed_in? && (current_user.id == comment.user_id || current_user.id == comment.post.user_id))%>
+  <div class="comment_content ">
+    <div class="row">
 
-        <a class=" right dropdown-button red-text" data-constrainWidth="false" data-beloworigin="true" data-activates='comment_options<%=comment.id%>'><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></a>
-         <ul id='comment_options<%=comment.id%>' class='dropdown-content'>
+        <div class="col s2 m1 l1" style="margin-left:5px"> <%= image_tag comment.user.avatar.url(:thumb),class:"circle responsive-img"%></div>
+        <div class="col s3 m3 l3" style="margin:10px 0 0 5px;"><strong > <%= link_to comment.user.username, profile_path(comment.user), style:"color:green;"%></strong></div>
+        <div class="col right">
+                <% if(user_signed_in? && (current_user.id == comment.user_id || current_user.id == comment.post.user_id))%>
 
-              <li><%= link_to [comment.post,comment], method: :delete, data: {confirm:"Are you sure, do you want to 'DELETE' this comment?"} do %>
-                  <i class="material-icons red-text"title="delete comment">delete</i> delete
-                <% end %>
-              </li>
+                    <a class=" dropdown-button red-text" data-constrainWidth="false" data-beloworigin="true" data-activates='comment_options<%=comment.id%>'><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></a>
+                     <ul id='comment_options<%=comment.id%>' class='dropdown-content'>
 
-            <% if (current_user.id == comment.user_id)%>
-                <li> <%= link_to  edit_post_comment_path(comment.post,comment) do%>
-                  <i class="material-icons green-text" title="edit comment"> edit</i> edit
-                  <%end%>
-                </li>
-            <% end %>
+                          <li><%= link_to [comment.post,comment], method: :delete, data: {confirm:"Are you sure, do you want to 'DELETE' this comment?"} do %>
+                              <i class="material-icons red-text"title="delete comment">delete</i> delete
+                            <% end %>
+                          </li>
 
-          </ul>
-   <% end %>
+                        <% if (current_user.id == comment.user_id)%>
+                            <li> <%= link_to  edit_post_comment_path(comment.post,comment) do%>
+                              <i class="material-icons green-text" title="edit comment"> edit</i> edit
+                              <%end%>
+                            </li>
+                        <% end %>
 
-    <p class="comment_body grey-text"><%=comment.body%></p>
-    <p class="comment_time"><%=time_ago_in_words(comment.created_at)%> Ago</p>
+                      </ul>
+               <% end %>
+        </div>
+
+   </div>
+
+<div class="row">
+  <p class="comment_body grey-text" style="margin-left:15%;margin-right:15%;margin-top:0"><%=comment.body%></p>
+  <p class="comment_time"  style="margin-left:5%"><%=time_ago_in_words(comment.created_at)%> Ago</p>
+</div>
 
   </div>
 
 </div>
+<hr>

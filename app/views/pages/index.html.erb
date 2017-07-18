@@ -1,19 +1,15 @@
 
-<h4 class="green-text">showing search results for "<%=params[:search]%>", <%= pluralize(@users.count,"match")%> </h4>
+<h5 class="">showing search results for "<%=params[:search]%>", <%= pluralize(@users.count,"match")%> </h5>
 <br>
 <% @users.each do |user| %>
-<br>
-    <div class="row">
-      <div class="col">
-          <%= link_to user.username, profile_path(user) %>
-            <br>
-            <%= user.email %>
-            <br>
-      </div>
+    <div class="row card " style="padding:5px 0 5px 0">
 
+      <div class="col s1 m1 l1" style="margin-left:5px"> <%= image_tag user.avatar.url(:thumb),class:"circle responsive-img"%></div>
+      <div class="col s3 m3 l3" style="margin:10px 0 0 5px;"><strong> <%= link_to user.username, profile_path(user) %></strong></div>
       <div class="right col">
         <%= render "pages/followunfollow_button",:user => user%>
       </div>
+
     </div>
 
 <% end %>
