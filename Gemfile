@@ -11,7 +11,7 @@ gem 'devise'
 gem "figaro"
 gem 'activeadmin',"~>1.0.0.pre5"
 gem 'acts_as_votable', '~> 0.10.0'
-gem 'will_paginate', '~> 3.1.1'
+gem 'will_paginate', '~> 3.1.6'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'

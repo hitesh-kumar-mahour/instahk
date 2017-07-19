@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
 
-  devise_for :admin_users, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
-
+devise_for :admin_users, ActiveAdmin::Devise.config
 
 get 'profile/:id'=> 'pages#profile' ,as: 'profile'
 get 'followers/:id'=> 'pages#followers' ,as: 'followers'
@@ -27,6 +25,10 @@ resources :pages, only: [:index]
     end
   end
 resources :relationships,       only: [:create, :destroy]
+
+
+    ActiveAdmin.routes(self)
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
