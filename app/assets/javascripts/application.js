@@ -15,7 +15,6 @@
 //= require turbolinks
 //= require materialize-sprockets
 //= require_tree
-//= require jquery.Jcrop
 // Initialize collapse button
 
 document.addEventListener("turbolinks:load", function() {
