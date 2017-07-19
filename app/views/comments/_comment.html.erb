@@ -31,13 +31,13 @@
                      <ul id='comment_options<%=comment.id%>' class='dropdown-content'>
 
                           <li><%= link_to [comment.post,comment], method: :delete, data: {confirm:"Are you sure, do you want to 'DELETE' this comment?"} do %>
-                              <i class="material-icons red-text"title="delete comment">delete</i> delete
+                              <i class="material-icons red-text"title="delete comment" style="margin-right:2px">delete</i> delete
                             <% end %>
                           </li>
 
                         <% if (current_user.id == comment.user_id)%>
                             <li> <%= link_to  edit_post_comment_path(comment.post,comment) do%>
-                              <i class="material-icons green-text" title="edit comment"> edit</i> edit
+                              <i class="material-icons green-text" title="edit comment" style="margin-right:2px"> edit</i> edit
                               <%end%>
                             </li>
                         <% end %>

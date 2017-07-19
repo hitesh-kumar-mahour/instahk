@@ -20,11 +20,11 @@
 
                <ul id='post_options' class='dropdown-content'>
                  <li ><%= link_to edit_post_path(@post) do %>
-                    <i class="material-icons green-text"title="edit post">edit</i> edit
+                    <i class="material-icons green-text"title="edit post" style="margin-right:2px">edit</i> edit
                    <%end%>
                  </li>
                  <li style="color:blue;"><%= link_to post_path(@post), method: :delete, data: {confirm:"Are you sure, do you want to 'DELETE' this post?"} do %>
-                    <i class="material-icons red-text"title="delete post">delete</i> delete
+                    <i class="material-icons red-text"title="delete post" style="margin-right:2px">delete</i> delete
                    <%end%>
                  </li>
                </ul>
