@@ -102,11 +102,16 @@ class User < ActiveRecord::Base
          end
        end
 
+
+
+
+
+
        def self.search(search)
              if search
-                 where('username LIKE ?', "%#{search}%")
-            #  else
-            #      all
+                 where('username LIKE ? or email LIKE ?',"%#{search}%", "%#{search}%")
+             else
+                 all
              end
        end
 
